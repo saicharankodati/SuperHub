@@ -20,12 +20,15 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^20.0.0",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
     "@angular/forms": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "@softarc/native-federation-node": "^2.0.10",
+    "es-module-shims": "^1.5.12",
     "jasmine-core": "^5.9.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -33,6 +36,7 @@
   },
   "devDependencies": {
     "@angular-architects/native-federation": "^20.1.6",
+    "@angular-devkit/build-angular": "^20.0.4",
     "@angular/build": "^20.0.4",
     "@angular/cli": "^20.0.4",
     "@angular/compiler-cli": "^20.0.0",
