@@ -52,7 +52,7 @@
 							}
 						],
 						"styles": [
-							"src/styles/test.style.scss"
+							"src/styles.scss"
 						]
 					}
 				},
@@ -69,7 +69,7 @@
 							}
 						],
 						"styles": [
-							"src/styles/test.style.scss"
+							"src/styles.scss"
 						],
 						"polyfills": [
 							"es-module-shims"

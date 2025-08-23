@@ -5,7 +5,11 @@ module.exports = withNativeFederation({
   name: 'shared-app',
 
   exposes: {
-    './Component': './update-this.ts',
+    './Enum': './src/enums/shared.enum.ts',
+    './Model': './src/models/shared.model.ts',
+    './Service': './src/services/shared.service.ts',
+    './Style': './src/styles/shared.style.ts',
+    './Util': './src/utilities/shared.util.ts',
   },
 
   shared: {
