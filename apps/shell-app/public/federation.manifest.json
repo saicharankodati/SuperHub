@@ -1,3 +1,5 @@
 {
-	"mfe1": "http://localhost:3000/remoteEntry.json"
+	"shared-app": "http://localhost:4201/remoteEntry.json",
+	"auth-app": "http://localhost:4202/remoteEntry.json",
+    "dashboard-app": "http://localhost:4203/remoteEntry.json"
 }

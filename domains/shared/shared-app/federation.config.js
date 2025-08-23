@@ -10,6 +10,7 @@ module.exports = withNativeFederation({
     './Service': './src/services/shared.service.ts',
     './Style': './src/styles/shared.style.ts',
     './Util': './src/utilities/shared.util.ts',
+    // './SharedStyles': './src/styles.scss',
   },
 
   shared: {
