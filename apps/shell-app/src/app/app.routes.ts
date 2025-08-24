@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/native-federation';
-import { Website } from './components/website/website';
 
 export const routes: Routes = [
     {
         path: '',
-        component: Website
+        loadChildren: () => import('./components/website/website.routes').then(m => m.websiteRoutes)
     },
     {
         path: 'auth',
@@ -16,12 +15,16 @@ export const routes: Routes = [
                 loadComponent: () => loadRemoteModule('auth-app', './SignInComponent').then((m) => m.SignIn)
             },
             {
-                path: 'signin',
+                path: 'sign-in',
                 loadComponent: () => loadRemoteModule('auth-app', './SignInComponent').then((m) => m.SignIn)
             },
             {
-                path: 'signup',
+                path: 'sign-up',
                 loadComponent: () => loadRemoteModule('auth-app', './SignUpComponent').then((m) => m.SignUp)
+            },
+            {
+                path: '**',
+                loadComponent: () => loadRemoteModule('auth-app', './SignInComponent').then((m) => m.SignIn)
             }
         ]
     },    
@@ -31,6 +34,6 @@ export const routes: Routes = [
     },
     {
         path: '**',
-        component: Website
+        loadChildren: () => import('./components/website/website.routes').then(m => m.websiteRoutes)
     }
 ];

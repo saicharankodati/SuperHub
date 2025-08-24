@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-website',
   imports: [],
   templateUrl: './website.html',
-  styleUrl: './website.scss'
+  styleUrls: ['./website.scss']
 })
 export class Website {
 

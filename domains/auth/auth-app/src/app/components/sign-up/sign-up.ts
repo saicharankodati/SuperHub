@@ -1,10 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-sign-up',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './sign-up.html',
-  styleUrl: './sign-up.scss'
+  styleUrls: ['./sign-up.scss']
 })
 export class SignUp {
 

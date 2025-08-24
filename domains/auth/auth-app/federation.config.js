@@ -6,6 +6,8 @@ module.exports = withNativeFederation({
 
   exposes: {
     './Component': './src/app/app.ts',
+    './SignInComponent': './src/app/components/sign-in/sign-in.ts',
+    './SignUpComponent': './src/app/components/sign-up/sign-up.ts',
   },
 
   shared: {
