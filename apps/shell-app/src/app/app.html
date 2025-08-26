@@ -1,2 +1,22 @@
-<h1>Shell-App</h1>
-<router-outlet />
+<div class="app-container">
+  <nav class="navbar navbar-expand shell">
+    <div class="row shell-bg">
+      <div class="col-1">
+        <a class="navbar-brand" routerLink="/">
+          <img src="../assets/images/logo-bg.png" alt="logo-bg" class="d-inline-block align-text-top logo-bg">
+          <img src="../assets/images/dark-logo.png" alt="logo" class="d-inline-block align-text-top logo">
+        </a>
+      </div>
+      <div class="col-11">
+        <ul class="navbar-nav float-end">
+          <li class="nav-item active" id="nav-signin" (click)="onSigninClick()">
+            <a class="nav-link" routerLink="/auth">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="app-content">
+    <router-outlet />
+  </div>
+</div>

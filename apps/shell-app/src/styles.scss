@@ -1,0 +1,207 @@
+body {
+    background-color: #000000;
+}
+
+body * {
+    user-select: none;
+}
+
+body div.app {
+    background-image: url(assets/images/bg.jpg) !important;
+    background-repeat: no-repeat !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s linear;
+}
+body div.app.active {
+    opacity: 1;
+}
+
+div.app-container {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 0 !important;
+    padding: 10px !important;
+    height: 100%;
+}
+
+nav.shell {
+    position: relative;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(3px);
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 50px !important;
+    height: 66px;
+    top: -76px;
+    transition: all 0.5s linear;
+}
+nav.shell.active {
+    top: 0;
+}
+
+nav.shell div.shell-bg {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 66px;
+    border-radius: 50px !important;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+nav.shell img.logo {
+    width: 41px;
+    transform: translate(-50px, -4px);
+    background: radial-gradient(rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+}
+
+nav.shell img.logo-bg {
+    width: 50px;
+    transform: translate(-5px, -2px);
+    transition: all 1000s linear;
+}
+nav.shell img.logo-bg.spin {
+    transform: translate(-5px, -2px) rotate(36000deg);
+}
+
+nav.shell .navbar-brand {
+    display: inline-block;
+    margin: 8px 8px !important;
+    padding: 0 !important;
+    width: 40px !important;
+    height: 50px;
+    background: radial-gradient(rgba(0, 0, 0, 0.8) 25%, transparent 75%);
+}
+
+nav.shell ul.navbar-nav {
+    margin: 12px 5px 0 0 !important;
+}
+
+nav.shell li.nav-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    transition: all 0.3s linear;
+}
+nav.shell li.nav-item:hover {
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+nav.shell li.nav-item:active {
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    transform: scale(1);
+}
+nav.shell li.nav-item#nav-signin {
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+nav.shell li.nav-item#nav-signin.active {
+    opacity: 1;
+}
+
+nav.shell a.nav-link {
+    margin: 0 !important;
+    padding: 6px 20px 7px 20px !important;
+    color: rgba(0, 0, 0, 0.7);
+    background: transparent;
+    border-radius: 50px;
+    transition: all 0.1s linear;
+}
+nav.shell a.nav-link:hover {
+    color: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.1);
+}
+nav.shell a.nav-link:active, a.nav-link:visited {
+    color: rgba(0, 0, 0, 0.7);
+    background: transparent;
+}
+
+div.app-content {
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: calc(100% - 65px);
+}
+
+div.signin-container {
+    position: relative;
+    padding: 30px;
+    width: 45%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    transform: translate(-50%, -50%);
+}
+
+.signin-info {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.signin-header {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+div.signin-container input[type="text"], div.signin-container input[type="password"] {
+    font-size: 24px;
+}
+
+input[type="text"], input[type="password"] {
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(3px);
+    border: none;
+    border-radius: 50px;
+    padding-top: 5px;
+    margin: 10px 0;
+    width: 100%;
+    transition: all 0.1s linear;
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="text"]:focus, input[type="password"]:focus,
+input[type="text"]:active, input[type="password"]:active {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+    border-color: none;
+    box-shadow: none;
+    outline: none;
+}
+
+button.btn {
+    background: rgba(100, 100, 100, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(3px);
+    border: none;
+    border-radius: 50px;
+    padding-top: 5px;
+    margin: 10px 0;
+    width: 100%;
+    transition: all 0.1s linear;
+}
+
+button.btn.btn-primary {
+    background: rgba(10, 195, 250, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(3px);
+    border: none;
+    border-radius: 50px;
+    padding-top: 5px;
+    margin: 10px 0;
+    width: 100%;
+    transition: all 0.1s linear;
+}
