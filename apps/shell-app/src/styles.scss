@@ -156,6 +156,33 @@ div.signin-container input[type="password"] {
     font-size: 24px;
 }
 
+div.signup-container {
+    position: relative;
+    padding: 20px 30px;
+    width: 45%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    transform: translate(-50%, -50%);
+}
+
+.signup-info {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.signup-header {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+div.signup-container input[type="text"],
+div.signup-container input[type="password"] {
+    font-size: 24px;
+}
+
 input[type="text"],
 input[type="password"] {
     background: rgba(255, 255, 255, 0.3);
