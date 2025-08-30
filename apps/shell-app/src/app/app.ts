@@ -17,10 +17,10 @@ export class App implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         switch(event.url) {
-          case '/signin':
+          case '/sign-in':
             this.router.navigate([`/auth${event.url}`]);
             break;
-          case '/signup':
+          case '/sign-up':
             this.router.navigate([`/auth${event.url}`]);
             break;
           default:
