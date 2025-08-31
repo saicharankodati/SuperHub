@@ -1,12 +1,53 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet, RouterLink, Router, Event, NavigationStart } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
-export class App {
-  protected readonly title = signal('shell-app');
+export class App implements OnInit {
+  appRootDiv: string = 'shell';
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        switch(event.url) {
+          case '/sign-in':
+            this.router.navigate([`/auth${event.url}`]);
+            break;
+          case '/sign-up':
+            this.router.navigate([`/auth${event.url}`]);
+            break;
+          default:
+            break;
+        }
+      }
+    });
+    setTimeout(() => {
+      var appDiv = document.querySelector('div.app') as HTMLElement;
+      if(appDiv) {
+        appDiv.classList.add('active');
+      }
+      var logobgImg = document.querySelector('img.logo-bg') as HTMLElement;
+      if(logobgImg) {
+        logobgImg.classList.add('spin');
+      }
+      var shellNav = document.querySelector('nav.shell') as HTMLElement;
+      if(shellNav) {
+        shellNav.classList.add('active');
+      }
+    }, 100);
+  }
+
+  onSigninClick() {
+    var signinBtn = document.getElementById('nav-signin');
+    if(signinBtn) {
+      signinBtn.classList.remove('active');
+    }
+  }
 }
