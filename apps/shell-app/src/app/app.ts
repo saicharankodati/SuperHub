@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router, Event, NavigationStart } from '@angular/router';
+import { IndexedDbService } from './services/indexed-db-service';
 
 @Component({
   standalone: true,
@@ -9,9 +10,11 @@ import { RouterOutlet, RouterLink, Router, Event, NavigationStart } from '@angul
   styleUrls: ['./app.scss']
 })
 export class App implements OnInit {
-  appRootDiv: string = 'shell';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private indexedDbService: IndexedDbService
+  ) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((event: Event) => {
