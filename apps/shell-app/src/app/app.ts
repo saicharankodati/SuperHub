@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router, Event, NavigationStart } from '@angular/router';
-import { IndexedDbService } from './services/indexed-db-service';
+import { IndexedDBService } from './services/indexeddb.service';
 
 @Component({
   standalone: true,
@@ -13,10 +13,10 @@ export class App implements OnInit {
 
   constructor(
     private router: Router,
-    private indexedDbService: IndexedDbService
+    private indexedDBService: IndexedDBService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         switch(event.url) {
@@ -32,6 +32,7 @@ export class App implements OnInit {
       }
     });
     setTimeout(() => {
+      this.checkActiveUserContext();
       var appDiv = document.querySelector('div.app') as HTMLElement;
       if(appDiv) {
         appDiv.classList.add('active');
@@ -45,6 +46,26 @@ export class App implements OnInit {
         shellNav.classList.add('active');
       }
     }, 100);
+  }
+
+  checkActiveUserContext() {
+    var userContext = {
+      id: 1,
+      username: 'Sai Charan Kodati',
+      email: 'saicharan.kodati@example.com'
+    };
+    this.indexedDBService.set('userContext', userContext).then((data) => {
+      debugger;
+    });
+    
+    this.indexedDBService.get('userContext', 1).then((data) => {
+      debugger;
+    });
+
+    // await this.indexedDbService.set('formDrafts', { formId: 'project-123', data: { name: 'New Project' } });
+    // const draft = await this.indexedDbService.get('formDrafts', 'project-123');
+    // await this.indexedDbService.delete('formDrafts', 'project-123');
+    // await this.indexedDbService.clear('formDrafts');
   }
 
   onSigninClick() {
