@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router, Event, NavigationStart } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, CommonModule],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
@@ -42,10 +43,17 @@ export class App implements OnInit {
     }, 100);
   }
 
-  onSigninClick() {
-    var signinBtn = document.getElementById('nav-signin');
-    if(signinBtn) {
-      signinBtn.classList.remove('active');
-    }
+  activateGetStarted() {
+    return this.router.url.startsWith('/auth') ? '' : this.router.url.startsWith('/dashboard') ? '' : 'active';
+  }
+
+  getStarted() {
+  }
+
+  activateWrapItUp() {
+    return this.router.url.startsWith('/dashboard') ? 'active' : '';
+  }
+
+  wrapItUp() {
   }
 }

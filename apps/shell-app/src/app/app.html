@@ -9,8 +9,11 @@
       </div>
       <div class="col-11">
         <ul class="navbar-nav float-end">
-          <li class="nav-item active" id="nav-signin" (click)="onSigninClick()">
-            <a class="nav-link" routerLink="/auth">Sign In</a>
+          <li class="nav-item nav-action" [ngClass]="activateGetStarted()" (click)="getStarted()">
+            <a class="nav-link" routerLink="/auth">Let's Get Started</a>
+          </li>
+          <li class="nav-item nav-action" [ngClass]="activateWrapItUp()" (click)="wrapItUp()">
+            <a class="nav-link" routerLink="/auth">Wrap It Up</a>
           </li>
         </ul>
       </div>
