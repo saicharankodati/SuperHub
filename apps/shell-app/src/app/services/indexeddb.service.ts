@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,10 @@ export class IndexedDBService {
   private databaseName = 'ShellAppIDB';
   private databaseVersion = 1;
   private database: IDBDatabase | null = null;
+  private isDatabaseReady: boolean = false;
+
+  private _indexedDBSignal = signal<any | null>(null);
+  public readonly indexedDBSignal = this._indexedDBSignal.asReadonly();
 
   constructor() {
     this.initializeIndexedDB();
@@ -22,11 +26,40 @@ export class IndexedDBService {
     };
     request.onsuccess = () => {
       this.database = request.result;
+      this.isDatabaseReady = true;
     };
     request.onerror = () => {
       console.error(request.error);
     };
   }
+
+  async ready(): Promise<boolean> {
+    if (this.isDatabaseReady) return true;
+
+    return new Promise((resolve) => {
+      const check = setInterval(() => {
+        if (this.isDatabaseReady) {
+          clearInterval(check);
+          resolve(true);
+        }
+      }, 10);
+    });
+  }
+
+  // async ready(): Promise<boolean> {
+  //   if(this.isDatabaseReady) {
+  //     return new Promise<boolean>((resolve) => {   
+  //       resolve(true);
+  //     });
+  //   } else {
+  //     return new Promise<boolean>(async (resolve) => {   
+  //       setTimeout(async () => {
+  //         let result = await this.ready();
+  //         resolve(result);
+  //       }, 10);
+  //     });
+  //   }
+  // }
 
   async getAll(store: string): Promise<any[]> {
     if (!this.database?.objectStoreNames.contains(store)) return [];
@@ -37,15 +70,35 @@ export class IndexedDBService {
     });
   }
 
-  async get(store: string, key: IDBValidKey): Promise<any> {
-    if (!this.database?.objectStoreNames.contains(store)) return undefined;
-    return new Promise((resolve) => {
-      const tx = this.database!.transaction(store, 'readonly');
-      const request = tx.objectStore(store).get(key);
+  async get(store: string, key: IDBValidKey): Promise<void> {
+    if (!this.database?.objectStoreNames.contains(store))
+      return new Promise<void>((resolve) => {
+        this._indexedDBSignal.set(null);
+        resolve();
+      });
 
-      request.onsuccess = () => resolve(request.result);
+    return new Promise<void>((resolve) => {
+      const request = this.database!.transaction(store, 'readonly').objectStore(store).get(key);
+      request.onsuccess = (event) => {
+        this._indexedDBSignal.set((event.target as IDBRequest).result);
+        resolve();
+      };
+      request.onerror = () => {
+        this._indexedDBSignal.set(null);
+        resolve();
+      };
     });
   }
+
+  // async get(store: string, key: IDBValidKey): Promise<any> {
+  //   if (!this.database?.objectStoreNames.contains(store)) return undefined;
+  //   return new Promise((resolve) => {
+  //     const tx = this.database!.transaction(store, 'readonly');
+  //     const request = tx.objectStore(store).get(key);
+
+  //     request.onsuccess = () => resolve(request.result);
+  //   });
+  // }
 
   async set(store: string, data: any): Promise<any> {
     if (!this.database?.objectStoreNames.contains(store)) return;

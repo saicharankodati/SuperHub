@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/native-federation';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -26,11 +27,13 @@ export const routes: Routes = [
                 path: '**',
                 loadComponent: () => loadRemoteModule('auth-app', './SignInComponent').then((m) => m.SignIn)
             }
-        ]
+        ],
+        canActivate: [AuthGuard]
     },    
     {
         path: 'dashboard',
-        loadComponent: () => loadRemoteModule('dashboard-app', './Component').then((m) => m.App)
+        loadComponent: () => loadRemoteModule('dashboard-app', './Component').then((m) => m.App),
+        canActivate: [AuthGuard]
     },
     {
         path: '**',
