@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { Router, CanActivateFn } from '@angular/router';
 import { IndexedDBService } from '../services/indexeddb.service';
 
-export const AuthGuard: CanActivateFn = async (route, state) => {
+export const UnauthGuard: CanActivateFn = async (route, state) => {
   const router = inject(Router);
   const indexedDBService = inject(IndexedDBService);
 
@@ -14,11 +14,10 @@ export const AuthGuard: CanActivateFn = async (route, state) => {
 
   await indexedDBService.get('userContext', 1);
   const userContext = indexedDBService.indexedDBSignal();
-  if (!userContext) {
-    router.navigate(['/auth'], { queryParams: { returnUrl: state.url } });
+  if (userContext) {
+    router.navigate(['/dashboard']);
     return false;
   }
 
   return true;
 };
-
