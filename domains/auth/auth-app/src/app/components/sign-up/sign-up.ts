@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-sign-up',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './sign-up.html',
   styleUrls: ['./sign-up.scss']
 })

@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IndexedDBService } from '../../services/indexeddb.service';
 
 @Component({
   standalone: true,
   selector: 'app-sign-in',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './sign-in.html',
   styleUrls: ['./sign-in.scss']
 })
