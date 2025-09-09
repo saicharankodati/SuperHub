@@ -9,14 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Website implements OnInit {
   ngOnInit() {
-    var navActions = document.getElementsByClassName('nav-action');
+    var navActions = document.querySelectorAll('.nav-action');
     for (let i = 0; i < navActions.length; i++) {
       let element = navActions[i] as HTMLElement;
       element.classList.remove('active');
     }
-    var getStartedBtn = document.getElementById('nav-get-started') as HTMLElement;
-    if (getStartedBtn) {
-      getStartedBtn.classList.add('active');
-    }
+    setTimeout(() => {
+      var getStartedBtn = document.querySelector('#nav-get-started') as HTMLElement;
+      if (getStartedBtn) {
+        getStartedBtn.classList.add('active');
+      }
+    }, 300);
   }
 }

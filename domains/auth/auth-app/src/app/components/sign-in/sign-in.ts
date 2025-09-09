@@ -15,11 +15,33 @@ export class SignIn implements OnInit, OnDestroy {
   private indexedDBService = inject(IndexedDBService);
 
   ngOnInit() {
+    setTimeout(() => {
+      var signInContainer = document.querySelector('div.component.signin-container');
+      if (signInContainer) {
+        signInContainer.classList.add('active');
+      }
+    }, 300);
   }
 
   handleSignIn() {
+    var signInContainer = document.querySelector('div.component.signin-container');
+    if (signInContainer) {
+      signInContainer.classList.remove('active');
+    }
     this.indexedDBService.set('userContext', { id: 1, name: 'John Doe', email: 'john.doe@example.com' });
-    this.router.navigate(['/dashboard']);
+    setTimeout(() => {
+      this.router.navigate(['/dashboard']);
+    }, 300);
+  }
+
+  goToSignUp() {
+    var signInContainer = document.querySelector('div.component.signin-container');
+    if (signInContainer) {
+      signInContainer.classList.remove('active');
+    }
+    setTimeout(() => {
+      this.router.navigate(['/sign-up']);
+    }, 300);
   }
 
   ngOnDestroy() {

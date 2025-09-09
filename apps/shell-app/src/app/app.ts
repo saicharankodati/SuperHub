@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
-import { RouterOutlet, RouterLink, Router, Event, NavigationStart } from '@angular/router';
+import { RouterOutlet, Router, Event, NavigationStart } from '@angular/router';
 import { IndexedDBService } from './services/indexeddb.service';
 
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, CommonModule],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
@@ -42,28 +42,42 @@ export class App implements OnInit, OnDestroy {
       if(shellNav) {
         shellNav.classList.add('active');
       }
-    }, 100);
+    }, 300);
+  }
+
+  goToWebsite() {
+    var signoutBtn = document.querySelector('#nav-signout') as HTMLElement;
+    if(signoutBtn) {
+      signoutBtn.classList.remove('active');
+    }
+    var component = document.querySelector('div.component') as HTMLElement;
+    if(component) {
+      component.classList.remove('active');
+    }
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 300);
   }
 
   getStarted() {
-    var getStartedBtn = document.getElementById('nav-get-started') as HTMLElement;
+    var getStartedBtn = document.querySelector('#nav-get-started') as HTMLElement;
     if(getStartedBtn) {
       getStartedBtn.classList.remove('active');
     }
     setTimeout(() => {
       this.router.navigate(['/auth']);
-    }, 200);
+    }, 300);
   }
 
   wrapItUp() {
-    var signoutBtn = document.getElementById('nav-signout') as HTMLElement;
+    var signoutBtn = document.querySelector('#nav-signout') as HTMLElement;
     if(signoutBtn) {
       signoutBtn.classList.remove('active');
     }
     this.indexedDBService.clear('userContext');
     setTimeout(() => {
       this.router.navigate(['/auth']);
-    }, 200);
+    }, 300);
   }
 
   ngOnDestroy() {

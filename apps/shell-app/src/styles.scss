@@ -52,6 +52,10 @@ nav.shell.active {
     top: 0;
 }
 
+nav.shell .navbar-brand {
+    cursor: pointer;
+}
+
 nav.shell div.shell-bg {
     margin: 0 !important;
     padding: 0 !important;
@@ -96,7 +100,7 @@ nav.shell li.nav-item {
     background: rgba(95, 65, 230, 0.5);
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.1s linear;
+    transition: all 0.3s linear;
 }
 
 nav.shell li.nav-item:hover {
@@ -134,7 +138,7 @@ div.app-content {
     height: calc(100% - 65px);
 }
 
-div.signin-container {
+div.component.signin-container {
     position: relative;
     padding: 30px;
     width: 45%;
@@ -144,6 +148,12 @@ div.signin-container {
     border-radius: 30px;
     color: rgba(255, 255, 255, 0.9);
     transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+
+div.component.signin-container.active {
+    opacity: 1;
 }
 
 .signin-info {
@@ -156,12 +166,12 @@ div.signin-container {
     font-weight: 600;
 }
 
-div.signin-container input[type="text"],
-div.signin-container input[type="password"] {
+div.component.signin-container input[type="text"],
+div.component.signin-container input[type="password"] {
     font-size: 24px;
 }
 
-div.signup-container {
+div.component.signup-container {
     position: relative;
     padding: 20px 30px;
     width: 45%;
@@ -171,6 +181,12 @@ div.signup-container {
     border-radius: 30px;
     color: rgba(255, 255, 255, 0.9);
     transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+
+div.component.signup-container.active {
+    opacity: 1;
 }
 
 .signup-info {
@@ -183,8 +199,8 @@ div.signup-container {
     font-weight: 600;
 }
 
-div.signup-container input[type="text"],
-div.signup-container input[type="password"] {
+div.component.signup-container input[type="text"],
+div.component.signup-container input[type="password"] {
     font-size: 24px;
 }
 
@@ -198,7 +214,7 @@ input[type="password"] {
     padding: 0 20px 2px 20px;
     margin: 10px 0;
     width: 100%;
-    transition: all 0.1s linear;
+    transition: all 0.3s linear;
 }
 
 input[type="text"]::placeholder,
@@ -226,7 +242,7 @@ button.btn {
     padding-top: 5px;
     margin: 10px 0;
     width: 100%;
-    transition: all 0.1s linear;
+    transition: all 0.3s linear;
 }
 
 
@@ -243,7 +259,7 @@ button.btn.btn-primary {
     padding-top: 5px;
     margin: 10px 0;
     width: 100%;
-    transition: all 0.1s linear;
+    transition: all 0.3s linear;
     font-size: 1.5rem;
 }
 
