@@ -151,4 +151,8 @@ export class IndexedDBService {
     this.database?.close();
     this.database = null;
   }
+
+  clearSignals(): void {
+    this._indexedDBSignal.set(null);
+  }
 }

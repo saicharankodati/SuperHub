@@ -95,6 +95,7 @@ nav.shell li.nav-item {
     padding: 0 !important;
     background: rgba(95, 65, 230, 0.5);
     border-radius: 50px;
+    cursor: pointer;
     transition: all 0.1s linear;
 }
 
@@ -110,10 +111,12 @@ nav.shell li.nav-item.nav-action {
     position: absolute;
     right: 17px;
     opacity: 0;
+    z-index: -1;
 }
 
 nav.shell li.nav-item.nav-action.active {
     opacity: 1;
+    z-index: auto;
 }
 
 nav.shell a.nav-link {

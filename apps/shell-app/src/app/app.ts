@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet, RouterLink, Router, Event, NavigationStart } from '@angular/router';
+import { IndexedDBService } from './services/indexeddb.service';
 
 @Component({
   standalone: true,
@@ -9,8 +10,9 @@ import { RouterOutlet, RouterLink, Router, Event, NavigationStart } from '@angul
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
-export class App implements OnInit {
+export class App implements OnInit, OnDestroy {
   private router = inject(Router);
+  private indexedDBService = inject(IndexedDBService);
 
   ngOnInit() {
     this.router.events.subscribe((event: Event) => {
@@ -43,17 +45,28 @@ export class App implements OnInit {
     }, 100);
   }
 
-  activateGetStarted() {
-    return this.router.url.startsWith('/auth') ? '' : this.router.url.startsWith('/dashboard') ? '' : 'active';
-  }
-
   getStarted() {
-  }
-
-  activateWrapItUp() {
-    return this.router.url.startsWith('/dashboard') ? 'active' : '';
+    var getStartedBtn = document.getElementById('nav-get-started') as HTMLElement;
+    if(getStartedBtn) {
+      getStartedBtn.classList.remove('active');
+    }
+    setTimeout(() => {
+      this.router.navigate(['/auth']);
+    }, 200);
   }
 
   wrapItUp() {
+    var signoutBtn = document.getElementById('nav-signout') as HTMLElement;
+    if(signoutBtn) {
+      signoutBtn.classList.remove('active');
+    }
+    this.indexedDBService.clear('userContext');
+    setTimeout(() => {
+      this.router.navigate(['/auth']);
+    }, 200);
+  }
+
+  ngOnDestroy() {
+    this.indexedDBService.clearSignals();
   }
 }
