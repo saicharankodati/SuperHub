@@ -34,6 +34,16 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         loadComponent: () => loadRemoteModule('dashboard-app', './Component').then((m) => m.App),
+        children: [
+            {
+                path: '',
+                loadComponent: () => loadRemoteModule('dashboard-app', './DashboardComponent').then((m) => m.Dashboard)
+            },
+            {
+                path: '**',
+                loadComponent: () => loadRemoteModule('dashboard-app', './DashboardComponent').then((m) => m.Dashboard)
+            }
+        ],
         canActivate: [AuthGuard]
     },
     {
