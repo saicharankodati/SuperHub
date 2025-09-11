@@ -112,7 +112,7 @@
 					},
 					"defaultConfiguration": "development",
 					"options": {
-						"port": 4202
+						"port": 3332
 					}
 				}
 			}
