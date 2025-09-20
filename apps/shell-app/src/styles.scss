@@ -36,14 +36,40 @@ div.app-container {
     height: 100%;
 }
 
+.navbar-brand {
+    display: inline-block;
+    margin: 1px 2px !important;
+    padding: 0 !important;
+    width: 45px !important;
+    height: 50px;
+    background: radial-gradient(rgba(255, 255, 255, 0.2) 25%, transparent 75%);
+    cursor: pointer;
+}
+
+img.logo {
+    width: 45px;
+    transform: translate(-66px, -6px);
+    background: radial-gradient(rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+}
+
+img.logo-bg {
+    width: 66px;
+    transform: translate(-10px, -10px);
+    transition: all 1000s linear;
+}
+
+img.logo-bg.spin {
+    transform: translate(-10px, -10px) rotate(36000deg);
+}
+
 nav.shell {
     position: relative;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(3px);
-    margin: 0 !important;
+    margin: 0 0 0 -54px !important;
     padding: 0 !important;
     border-radius: 50px !important;
-    height: 66px;
+    height: 50px;
     top: -76px;
     transition: all 0.5s linear;
 }
@@ -52,68 +78,39 @@ nav.shell.active {
     top: 0;
 }
 
-nav.shell .navbar-brand {
-    cursor: pointer;
-}
-
 nav.shell div.shell-bg {
     margin: 0 !important;
     padding: 0 !important;
     width: 100%;
-    height: 66px;
+    height: 50px;
     border-radius: 50px !important;
     background: rgba(255, 255, 255, 0.2);
 }
 
-nav.shell img.logo {
-    width: 41px;
-    transform: translate(-50px, -4px);
-    background: radial-gradient(rgba(255, 255, 255, 0.5) 0%, transparent 70%);
-}
-
-nav.shell img.logo-bg {
-    width: 50px;
-    transform: translate(-5px, -2px);
-    transition: all 1000s linear;
-}
-
-nav.shell img.logo-bg.spin {
-    transform: translate(-5px, -2px) rotate(36000deg);
-}
-
-nav.shell .navbar-brand {
-    display: inline-block;
-    margin: 8px 8px !important;
-    padding: 0 !important;
-    width: 40px !important;
-    height: 50px;
-    background: radial-gradient(rgba(0, 0, 0, 0.8) 25%, transparent 75%);
-}
-
 nav.shell ul.navbar-nav {
-    margin: 15px 5px 0 0 !important;
+    margin: 7px 7px !important;
 }
 
 nav.shell li.nav-item {
     margin: 0 !important;
     padding: 0 !important;
-    background: rgba(95, 65, 230, 0.5);
+    background: rgba(115, 95, 215, 0.5);
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s linear;
 }
 
 nav.shell li.nav-item:hover {
-    background: rgba(95, 65, 230, 0.6);
+    background: rgba(115, 95, 215, 0.6);
 }
 
 nav.shell li.nav-item:active {
-    background: rgba(95, 65, 230, 0.6);
+    background: rgba(115, 95, 215, 0.5);
 }
 
 nav.shell li.nav-item.nav-action {
     position: absolute;
-    right: 17px;
+    right: 8px;
     opacity: 0;
     z-index: -1;
 }
@@ -135,7 +132,7 @@ div.app-content {
     position: relative;
     margin: 0 !important;
     padding: 0 !important;
-    height: calc(100% - 65px);
+    height: calc(100% - 50px);
 }
 
 div.component.signin-container {
@@ -168,7 +165,7 @@ div.component.signin-container.active {
 
 div.component.signin-container input[type="text"],
 div.component.signin-container input[type="password"] {
-    font-size: 24px;
+    font-size: 21px;
 }
 
 div.component.signup-container {
@@ -245,9 +242,12 @@ button.btn {
     transition: all 0.3s linear;
 }
 
-
 button.btn:hover {
     background: rgba(100, 100, 100, 0.8);
+}
+
+button.btn:active {
+    background: rgba(100, 100, 100, 0.6);
 }
 
 button.btn.btn-primary {
@@ -260,9 +260,13 @@ button.btn.btn-primary {
     margin: 10px 0;
     width: 100%;
     transition: all 0.3s linear;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 button.btn.btn-primary:hover {
     background: rgba(135, 115, 240, 0.6);
+}
+
+button.btn.btn-primary:active {
+    background: rgba(135, 115, 240, 0.5);
 }

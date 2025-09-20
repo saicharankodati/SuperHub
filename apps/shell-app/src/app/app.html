@@ -1,5 +1,28 @@
 <div class="app-container">
-  <nav class="navbar navbar-expand shell">
+  <div class="row">
+    <div class="col-1">
+      <a class="navbar-brand" (click)="goToWebsite()">
+        <img src="assets/images/logo-bg.png" alt="logo-bg" class="d-inline-block align-text-top logo-bg">
+        <img src="assets/images/dark-logo.png" alt="logo" class="d-inline-block align-text-top logo">
+      </a>
+    </div>
+    <div class="col-11">
+      <nav class="navbar navbar-expand shell">
+        <div class="shell-bg">
+          <ul class="navbar-nav float-end">
+              <li class="nav-item nav-action" id="nav-get-started" (click)="getStarted()">
+                <a class="nav-link">Let's Get Started</a>
+              </li>
+              <li class="nav-item nav-action" id="nav-signout" (click)="wrapItUp()">
+                <a class="nav-link">Wrap It Up</a>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <!-- <nav class="navbar navbar-expand shell">
     <div class="row shell-bg">
       <div class="col-1">
         <a class="navbar-brand" (click)="goToWebsite()">
@@ -18,7 +41,7 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
   <div class="app-content">
     <router-outlet />
   </div>
