@@ -20,7 +20,7 @@ export class SignIn implements OnInit, OnDestroy {
       if (signInContainer) {
         signInContainer.classList.add('active');
       }
-    }, 300);
+    }, 600);
   }
 
   handleSignIn() {

@@ -18,7 +18,7 @@ export class SignUp implements OnInit {
       if (signUpContainer) {
         signUpContainer.classList.add('active');
       }
-    }, 300);
+    }, 600);
   }
   
   handleSignUp() {
