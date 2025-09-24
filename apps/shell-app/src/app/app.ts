@@ -59,7 +59,7 @@ export class App implements OnInit, OnDestroy {
     }, 300);
   }
 
-  getStarted() {
+  goToApplication() {
     var getStartedBtn = document.querySelector('#nav-get-started') as HTMLElement;
     if(getStartedBtn) {
       getStartedBtn.classList.remove('active');
@@ -69,7 +69,7 @@ export class App implements OnInit, OnDestroy {
     }, 300);
   }
 
-  wrapItUp() {
+  handleSignOut() {
     var signoutBtn = document.querySelector('#nav-signout') as HTMLElement;
     if(signoutBtn) {
       signoutBtn.classList.remove('active');
