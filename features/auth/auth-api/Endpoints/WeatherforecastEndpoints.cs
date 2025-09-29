@@ -2,9 +2,9 @@
 
 public static class WeatherforecastEndpoints
 {
-    public static WebApplication MapWeatherforecastEndpoints(this WebApplication app)
+    public static RouteGroupBuilder MapWeatherforecastEndpoints(this RouteGroupBuilder group)
     {
-        app.MapGet("/weatherforecast", () =>
+        group.MapGet("/weatherforecast", () =>
         {
             var summaries = new[]
             {
@@ -21,7 +21,7 @@ public static class WeatherforecastEndpoints
             return forecast;
         });
 
-        return app;
+        return group;
     }
 
     internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
